@@ -12,14 +12,16 @@ public class Logarithm extends Function implements Calculations{
 		this.a = a;
 		this.b = b;
 		this.x = x;
+		super.setName("Logarithm"); 
+
 		// TODO Auto-generated constructor stub
 	}
 
 
 	@Override
 	public double val(double x) {
-		// TODO Auto-generated method stub
-		return 0;
+		double y = a * Math.log(x - x1) + b;
+		return y;
 	}
 
 
