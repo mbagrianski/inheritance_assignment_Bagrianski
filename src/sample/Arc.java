@@ -1,7 +1,7 @@
-package sample;
+package application;
 
 public class Arc extends Function implements Calculations{
-
+	
 	protected double r;
 	protected double xcenter;
 	protected double ycenter;
@@ -10,15 +10,19 @@ public class Arc extends Function implements Calculations{
 		super(0, 0); //domain for now
 		this.r = r;
 		this.xcenter = xcenter;
-		this.ycenter = ycenter;
-
+		this.ycenter = ycenter;	
+		super.setName("Arc");
+	}
+	
+	@Override
+	public String toString() {
 		String strr = new String(String.valueOf(r));
 		if(r == 0.0){
 			strr = "";
 		}else {
 			strr = "("+strr+")^2 - ";
 		}
-
+		
 		String strXcenter = new String(String.valueOf(-xcenter));
 		if(xcenter == 0.0){
 			strXcenter = "";
@@ -36,7 +40,7 @@ public class Arc extends Function implements Calculations{
 			strYcenter = " " + strYcenter;
 		}
 
-		super.name = "f(x) = sqrt[ "+ strr + "(x" + strXcenter
+		return "f(x) = sqrt[ "+ strr + "(x" + strXcenter
 				+ ")^2 ]" + strYcenter;
 	}
 
@@ -62,14 +66,14 @@ public class Arc extends Function implements Calculations{
 		for(double i = x_start; i <= x_end; i+= deltaX) {
 			area += val(i) * deltaX;
 		}
-		return area;
+		return area;		
 	}
 
 	@Override
 	public double getSlope(double x) {
 		double deltaX = 0.01;
-		double slope = (val(x + deltaX) - val(x - deltaX)) / (2 * deltaX);
-		return slope;
+		double slope = (val(x + deltaX) - val(x - deltaX)) / (2 * deltaX);	
+		return slope;		
 	}
 
 }
