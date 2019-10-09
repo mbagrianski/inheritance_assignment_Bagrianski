@@ -64,13 +64,13 @@ public class Quadratic extends Function implements Calculations{
     }
 
     @Override
-    public boolean undefined(double x) {
-        if(super.x1 <= x && x <= super.x2) {
-            return true;
-        }else {
-            return false;
-        }
-    }
+	public boolean undefined(double x) {
+		if(super.x1 <= x && x <= super.x2) {			
+			return false;
+		}else {
+			return true;
+		}		
+	}
 
     @Override
     public double getArea(double x_start, double x_end) {
