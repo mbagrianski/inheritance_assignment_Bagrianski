@@ -1,11 +1,11 @@
-package sample;
+package application;
 
 /**
- *
+ * 
  * Interface for functions
  *
  */
-public interface Calculations
+public interface Calculations 
 {
 	/**
 	 * Returns the value of a function f at x
@@ -13,15 +13,15 @@ public interface Calculations
 	 * @return the value of a function f at x
 	 */
 	public double val(double x);
-
-
+	
+	
 	/**
-	 *
+	 * 
 	 * @return true if the function is undefined.
 	 */
 	public boolean undefined(double x);
-
-
+	
+	
 	/**
 	 * Returns the area under a Function
 	 * @param f - Function
@@ -30,8 +30,8 @@ public interface Calculations
 	 * @return the area under a Function f from x = x_start to x = x_end
 	 */
 	public double getArea(double x_start, double x_end);
-
-
+	
+	
 	/**
 	 * Returns the slope of a Function at a certain point
 	 * @param f - Function
@@ -41,6 +41,7 @@ public interface Calculations
 	public double getSlope(double x);
 
 
+	public String toString();
 
-
+	
 }
