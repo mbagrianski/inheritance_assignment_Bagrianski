@@ -1,7 +1,7 @@
-package sample;
+package application;
 
 public class Logarithm extends Function implements Calculations{
-
+	
 	protected double a;
 	protected double b;
 	protected double x;
@@ -35,15 +35,20 @@ public class Logarithm extends Function implements Calculations{
 
 	@Override
 	public double getArea(double x_start, double x_end) {
-		// TODO Auto-generated method stub
-		return 0;
+		double deltaX = 0.01;
+		double area = 0;
+		for(double i = x_start; i <= x_end; i+= deltaX) {
+			area += val(i) * deltaX;
+		}
+		return area;		
 	}
 
 
 	@Override
 	public double getSlope(double x) {
-		// TODO Auto-generated method stub
-		return 0;
+		double deltaX = 0.01;
+		double slope = (val(x + deltaX) - val(x - deltaX)) / (2 * deltaX);	
+		return slope;		
 	}
 
 }
