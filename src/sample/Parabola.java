@@ -1,41 +1,75 @@
 package sample;
 
-public class Parabola extends Function implements Calculations{
-	
+public class Parabola extends Quadratic implements Calculations{
+
 	protected double a;
 	protected double b;
 	protected double x1;
 
 	public Parabola(double a, double b, double x1) {
-		super(0, 0); //domain for now
+		super(x1, x1, x1, x1); //domain for now
 		this.a = a;
 		this.b = b;
 		this.x1 = x1;
-		// TODO Auto-generated constructor stub
+
+		String stra = new String(String.valueOf(a));
+		if(a == 1.0){
+			stra = "";
+		}else if (a == -1.0){
+			stra = "-";
+		}
+		String strb = new String(String.valueOf(b));
+		if(b == 0.0){
+			strb = "";
+		}else if(b > 0.0){
+			strb = "+ " + strb;
+		}
+		String strx1 = new String(String.valueOf(-x1));
+		if(x1 == 0.0){
+			strx1 = "";
+		}else if (x1 < 0.0){
+			strx1 = " + " + strx1;
+		}else{
+			strx1 = " " + strx1;
+		}
+
+		if (a == 0){
+			super.name = "f(x) = " + strb;
+		}else{
+			super.name = "f(x) = " + stra + "(x" + strx1 + ")^2 " + strb;
+		}
 	}
 
 	@Override
-	public float val(float x) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double val(double x) {
+		double y = a * (x - x1) * (x - x1) + b;
+		return y;
 	}
 
 	@Override
-	public boolean undefined() {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean undefined(double x) {
+		if(super.x1 <= x && x <= super.x2) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 	@Override
-	public float getArea(float x_start, float x_end) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double getArea(double x_start, double x_end) {
+		double deltaX = 0.01;
+		double area = 0;
+		for(double i = x_start; i <= x_end; i+= deltaX) {
+			area += val(i) * deltaX;
+		}
+		return area;
 	}
 
 	@Override
-	public float getSlope(float x) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double getSlope(double x) {
+		double deltaX = 0.01;
+		double slope = (val(x + deltaX) - val(x - deltaX)) / (2 * deltaX);
+		return slope;
 	}
 
 }

@@ -1,7 +1,7 @@
 package sample;
 
 public class Logarithm extends Function implements Calculations{
-	
+
 	protected double a;
 	protected double b;
 	protected double x;
@@ -17,28 +17,28 @@ public class Logarithm extends Function implements Calculations{
 
 
 	@Override
-	public float val(float x) {
+	public double val(double x) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 
 	@Override
-	public boolean undefined() {
+	public boolean undefined(double x) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 
 	@Override
-	public float getArea(float x_start, float x_end) {
+	public double getArea(double x_start, double x_end) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 
 	@Override
-	public float getSlope(float x) {
+	public double getSlope(double x) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

@@ -1,7 +1,7 @@
 package sample;
 
 public class Cubic extends Function implements Calculations{
-	
+
 	protected double a;
 	protected double b;
 	protected double c;
@@ -19,27 +19,36 @@ public class Cubic extends Function implements Calculations{
 	}
 
 	@Override
-	public float val(float x) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double val(double x) {
+		double y = a*(x - x1)*(x - x1)*(x - x1) + b*(x - x1)*(x - x1)
+				+c*(x - x1) + d;
+		return y;
 	}
 
 	@Override
-	public boolean undefined() {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean undefined(double x) {
+		if(super.x1 <= x && x <= super.x2) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 	@Override
-	public float getArea(float x_start, float x_end) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double getArea(double x_start, double x_end) {
+		double deltaX = 0.01;
+		double area = 0;
+		for(double i = x_start; i <= x_end; i+= deltaX) {
+			area += val(i) * deltaX;
+		}
+		return area;
 	}
 
 	@Override
-	public float getSlope(float x) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double getSlope(double x) {
+		double deltaX = 0.01;
+		double slope = (val(x + deltaX) - val(x - deltaX)) / (2 * deltaX);
+		return slope;
 	}
 
 }
