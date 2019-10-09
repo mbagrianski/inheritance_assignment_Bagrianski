@@ -25,8 +25,11 @@ public class Logarithm extends Function implements Calculations{
 
 	@Override
 	public boolean undefined(double x) {
-		// TODO Auto-generated method stub
-		return false;
+		if(super.x1 <= x && x <= super.x2) {			
+			return false;
+		}else {
+			return true;
+		}		
 	}
 
 
