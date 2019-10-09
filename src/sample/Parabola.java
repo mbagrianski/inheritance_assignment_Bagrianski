@@ -48,11 +48,11 @@ public class Parabola extends Quadratic implements Calculations{
 
 	@Override
 	public boolean undefined(double x) {
-		if(super.x1 <= x && x <= super.x2) {
-			return true;
-		}else {
+		if(super.x1 <= x && x <= super.x2) {			
 			return false;
-		}
+		}else {
+			return true;
+		}		
 	}
 
 	@Override
