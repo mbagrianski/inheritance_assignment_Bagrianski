@@ -42,7 +42,7 @@ public class Linear extends Function implements Calculations{
 		if (m == 0){
 			return "f(x) = " + strb;
 		}else{
-			return "f(x) = " + strm + "(x" + strx1 + ") " + strb;
+			return "f(x) = " + strm + " * (x" + strx1 + ") " + strb;
 		}
 	}
 
