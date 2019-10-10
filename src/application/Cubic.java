@@ -58,19 +58,19 @@ public class Cubic extends Function implements Calculations{
 		if (a == 0 && b ==0 && c == 0){		
 			return "f(x) = " + strd;
 		}else if(a == 0 && b == 0){
-			return "f(x) = " + strc + "(x" + strx1 + ") " + strd;
+			return "f(x) = " + strc + " * (x" + strx1 + ") " + strd;
 		}else if(b == 0 && c == 0) {
-			return "f(x) = " + stra + "(x" + strx1 + ")^3 " + strd;
+			return "f(x) = " + stra + " * (x" + strx1 + ")^3 " + strd;
 		}else if(a == 0 && c == 0) {
-			return "f(x) = " + strb + "(x" + strx1 + ")^2 " + strd;
+			return "f(x) = " + strb + " * (x" + strx1 + ")^2 " + strd;
 		}else if(a == 0){
-			return "f(x) = " + strb + "(x" + strx1 + ")^2 "+ strc + "(x" + strx1 + ") " + strd;
+			return "f(x) = " + strb + " * (x" + strx1 + ")^2 "+ strc + " * (x" + strx1 + ") " + strd;
 		}else if(b == 0){
-			return "f(x) = " + stra + "(x" + strx1 + ")^3 "+ strc + "(x" + strx1 + ") " + strd;
+			return "f(x) = " + stra + " * (x" + strx1 + ")^3 "+ strc + " * (x" + strx1 + ") " + strd;
 		}else if(c == 0){
-			return "f(x) = " + stra + "(x" + strx1 + ")^3 "+ strb + "(x" + strx1 + ")^2 " + strd;
+			return "f(x) = " + stra + " * (x" + strx1 + ")^3 "+ strb + " * (x" + strx1 + ")^2 " + strd;
 		}else {
-			return "f(x) = " + stra + "(x" + strx1 + ")^3 "+ strb + "(x" + strx1 + ")^2 " + strc + "(x" + strx1 + ")^2 " + strd;
+			return "f(x) = " + stra + " * (x" + strx1 + ")^3 "+ strb + " * (x" + strx1 + ")^2 " + strc + " * (x" + strx1 + ")^2 " + strd;
 		}
 	}
 
