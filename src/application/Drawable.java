@@ -1,6 +1,4 @@
-package application;
-
-import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.canvas.Canvas;
 
 public interface Drawable 
 {
@@ -9,6 +7,6 @@ public interface Drawable
 	 * @param gc -  the JavaFX Graphics Context to be drawn into
 	 * @param f - function to be drawn
 	 */
-	public void draw(GraphicsContext gc, Function f);
+	public void draw(Canvas c);
 
 }
