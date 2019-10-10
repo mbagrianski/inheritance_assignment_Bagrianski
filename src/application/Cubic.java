@@ -27,16 +27,20 @@ public class Cubic extends Function implements Calculations{
 			stra = "-";
 		}
 		String strb = new String(String.valueOf(b));
-		if(a == 1.0){
-			strb = "";
-		}else if (a == -1.0){
+		if(b == 1.0){
+			strb = "+ ";
+		}else if (b == -1.0){
 			strb = "-";
+		}else if (b > 1.0){
+			strb = "+ " + strb;
 		}
 		String strc = new String(String.valueOf(c));
-		if(a == 1.0){
-			strc = "";
-		}else if (a == -1.0){
+		if(c == 1.0){
+			strc = "+ ";
+		}else if (c == -1.0){
 			strc = "-";
+		}else if (c > 1.0){
+			strc = "+ "+ strc;
 		}
 		String strd = new String(String.valueOf(d));
 		if (d == 0 && c == 0 && b == 0 && a == 0) {
@@ -58,19 +62,19 @@ public class Cubic extends Function implements Calculations{
 		if (a == 0 && b ==0 && c == 0){		
 			return "f(x) = " + strd;
 		}else if(a == 0 && b == 0){
-			return "f(x) = " + strc + " * (x" + strx1 + ") " + strd;
+			return "f(x) = " + strc + "(x" + strx1 + ") " + strd;
 		}else if(b == 0 && c == 0) {
-			return "f(x) = " + stra + " * (x" + strx1 + ")^3 " + strd;
+			return "f(x) = " + stra + "(x" + strx1 + ")^3 " + strd;
 		}else if(a == 0 && c == 0) {
-			return "f(x) = " + strb + " * (x" + strx1 + ")^2 " + strd;
+			return "f(x) = " + strb + "(x" + strx1 + ")² " + strd;
 		}else if(a == 0){
-			return "f(x) = " + strb + " * (x" + strx1 + ")^2 "+ strc + " * (x" + strx1 + ") " + strd;
+			return "f(x) = " + strb + "(x" + strx1 + ")² "+ strc + "(x" + strx1 + ") " + strd;
 		}else if(b == 0){
-			return "f(x) = " + stra + " * (x" + strx1 + ")^3 "+ strc + " * (x" + strx1 + ") " + strd;
+			return "f(x) = " + stra + "(x" + strx1 + ")³ "+ strc + "(x" + strx1 + ") " + strd;
 		}else if(c == 0){
-			return "f(x) = " + stra + " * (x" + strx1 + ")^3 "+ strb + " * (x" + strx1 + ")^2 " + strd;
+			return "f(x) = " + stra + "(x" + strx1 + ")³ "+ strb + "(x" + strx1 + ")² " + strd;
 		}else {
-			return "f(x) = " + stra + " * (x" + strx1 + ")^3 "+ strb + " * (x" + strx1 + ")^2 " + strc + " * (x" + strx1 + ")^2 " + strd;
+			return "f(x) = " + stra + "(x" + strx1 + ")³ "+ strb + "(x" + strx1 + ")² " + strc + "(x" + strx1 + ") " + strd;
 		}
 	}
 
