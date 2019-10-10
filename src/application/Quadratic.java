@@ -53,11 +53,11 @@ public class Quadratic extends Function implements Calculations{
 		if (a == 0 && b ==0){
 			return "f(x) = " + strc;
 		}else if(a == 0){
-			return "f(x) = " + strb + "(x" + strx1 + ") " + strc;
+			return "f(x) = " + strb + " * (x" + strx1 + ") " + strc;
 		}else if(b == 0) {
-			return "f(x) = " + stra + "(x" + strx1 + ")^2 " + strc;
+			return "f(x) = " + stra + " * (x" + strx1 + ")^2 " + strc;
 		}else {
-			return "f(x) = " + stra + "(x" + strx1 + ")^2 "+ strb + "(x" + strx1 + ") " + strc;
+			return "f(x) = " + stra + " * (x" + strx1 + ")^2 "+ strb + " * (x" + strx1 + ") " + strc;
 		}
 	}
 
