@@ -42,7 +42,7 @@ public class Parabola extends Quadratic implements Calculations{
 		if (a == 0){
 			return "f(x) = " + strb;
 		}else{
-			return "f(x) = " + stra + "(x" + strx1 + ")^2 " + strb;
+			return "f(x) = " + stra + " * (x" + strx1 + ")^2 " + strb;
 		}
 	}
 	
