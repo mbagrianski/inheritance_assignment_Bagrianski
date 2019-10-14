@@ -1,6 +1,9 @@
 package application;
 
-public class Logarithm extends Function implements Calculations{
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+
+public class Logarithm extends Function implements Calculations, Drawable{
 	
 	protected double a;
 	protected double b;
@@ -18,39 +21,58 @@ public class Logarithm extends Function implements Calculations{
 	}
 
 
-	@Override
-	public double val(double x) {
-		double y = a * Math.log(x - x1) + b;
-		return y;
-	}
+    @Override
+    public double val(double x) {
+        double y =  a * Math.log(x - x1) + b;
+        return y;
+    }
 
+    @Override
+    public boolean undefined(double x) {
+        if(x < super.getStartDomain() || x > super.getEndDomain()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
-	@Override
-	public boolean undefined(double x) {
-		if(super.x1 <= x && x <= super.x2) {			
-			return false;
-		}else {
-			return true;
-		}		
-	}
+    @Override
+    public double getArea(double x_start, double x_end) {
+        double delta = 0.01;
+        double i = x_start, area = 0;
+        while (i <= x_end) {
+            area += val(i) * delta;
+            i += delta;
+        }
+        return area;
+    }
 
+    @Override
+    public double getSlope(double x) {
+        double deltaX = 0.01;
+        return (val(x + deltaX) - val(x - deltaX)) / deltaX / 2.0;
+    }
 
-	@Override
-	public double getArea(double x_start, double x_end) {
-		double deltaX = 0.01;
-		double area = 0;
-		for(double i = x_start; i <= x_end; i+= deltaX) {
-			area += val(i) * deltaX;
-		}
-		return area;		
-	}
+    @Override
+    public void draw(Canvas canvas) {
+        double i = super.x1;
+        double deltaX = 0.1;
+        double width = canvas.getWidth();
+        double height = canvas.getHeight();
 
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc.setLineWidth(1);
+        gc.setStroke(super.getColour());
 
-	@Override
-	public double getSlope(double x) {
-		double deltaX = 0.01;
-		double slope = (val(x + deltaX) - val(x - deltaX)) / (2 * deltaX);	
-		return slope;		
-	}
-
+        while (i <= super.x2) {
+            double prevX = i;
+            i = Math.round((i + deltaX) * 10.0) / 10.0;
+            if (undefined(i)) continue;
+            double startX = prevX + width / 2.0;
+            double startY = -val(prevX) + height / 2.0;
+            double endX = i + width / 2.0;
+            double endY = -val(i) + height / 2.0;
+            gc.strokeLine(startX, startY, endX, endY);
+        }
+    }
 }

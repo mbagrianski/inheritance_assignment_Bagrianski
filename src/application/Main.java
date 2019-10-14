@@ -16,46 +16,42 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
 	public static void main(String[] args) {
-		
-		Linear l = new Linear(0, 0, 0); //parameters		
-		Arc a = new Arc(0, 0, 0); //parameters
-		Logarithm ln = new Logarithm(0, 0, 0); //parameters		
-		Quadratic q = new Quadratic(-10, -12, -14, -16); //parameters		
-		Cubic c = new Cubic(0, 0, 0, 0, 0); //parameters
-		Parabola p = new Parabola(-1, 0, 0); //parameters
-		
-		
-		System.out.println(l.toString());	
-		System.out.println(l.getName());
-		
-
 		launch(args);
-
 	}
+
+    double width = 600, height = 600;
+    Group root = new Group();
+    Scene scene = new Scene(root);
+
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		primaryStage.setTitle("Drawing Functions Test");
-		Group root = new Group();
-		Canvas canvas = new Canvas(300, 250);
-		GraphicsContext gc = canvas.getGraphicsContext2D();
-		drawShapes(gc);
-		root.getChildren().add(canvas);
-		primaryStage.setScene(new Scene(root));
-		primaryStage.show();
+        primaryStage.setTitle("Drawing Functions Test");
+        Canvas canvas = new Canvas(width, height);
+        GraphicsContext gc = canvas.getGraphicsContext2D();
 
+        gc.strokeLine(0, height/2, width, height/2);
+        gc.strokeLine(width/2, 0, width/2, height);
+
+        root.getChildren().add(canvas);
+
+        Linear line = new Linear(-1.0, 0, 0.0);
+        line.setColour(Color.RED);
+        line.setName("Line 1");
+        line.setDomain(-200, 200);
+        System.out.println(line.getName());
+        System.out.println(line.toString());
+        System.out.println(line.getArea(-10, 10));
+        System.out.println(line.getSlope(0));
+        line.draw(canvas);
+
+
+
+        primaryStage.setScene(scene);
+        primaryStage.show();
 	}
 
 	// test method for drawing - you can use this as an example for drawing various types of lines
-	private void drawShapes(GraphicsContext gc) {
-		gc.setFill(Color.GREEN);
-		gc.setStroke(Color.BLUE);
-		gc.setLineWidth(5);
-		gc.strokeLine(40, 10, 10, 40);
-		gc.strokePolygon(new double[]{60, 90, 60, 90},
-				new double[]{210, 210, 240, 240}, 4);
-		gc.strokePolyline(new double[]{110, 140, 110, 140},
-				new double[]{210, 210, 240, 240}, 4);
-	}
+
 
 }

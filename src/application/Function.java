@@ -22,11 +22,11 @@ public class Function
 		this.x2 = x2;
 	}
 	public Function() {		
-		this.x1 = 300;
+		this.x1 = -300;
 		this.x2 = 300;
 	}
-	
-	// Returns a String containing the actual function.  For example, if the function was an object of the Parabola class, 
+
+	// Returns a String containing the actual function.  For example, if the function was an object of the Parabola class,
 	// this method might return 2.0*(x - 4.0)^2 + 5.0.  There are spaces before and after the +, - operators only.
 	
 	// Sets the domain of this function to be between [x1, x2] where x2 > x1.
@@ -57,7 +57,7 @@ public class Function
 	// Returns the colour of this function.
 	public Color getColour()
 	{
-		return Color.RED;
+		return col;
 	}
 	
 	// Sets the name of this function type.
