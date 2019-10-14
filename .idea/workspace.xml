@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Updated for use with package sample">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/inheritance_assignment_Bagrianski/sample/Arc.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/inheritance_assignment_Bagrianski/sample/Calculations.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/inheritance_assignment_Bagrianski/sample/Cubic.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/inheritance_assignment_Bagrianski/sample/Drawable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/inheritance_assignment_Bagrianski/sample/Function.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/inheritance_assignment_Bagrianski/sample/Linear.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/inheritance_assignment_Bagrianski/sample/Logarithm.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/inheritance_assignment_Bagrianski/sample/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/inheritance_assignment_Bagrianski/sample/Parabola.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/inheritance_assignment_Bagrianski/sample/Quadratic.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/Arc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Arc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/Cubic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Cubic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/Drawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Drawable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/Function.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Function.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/Linear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Linear.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/Logarithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Logarithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/Parabola.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Parabola.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/Quadratic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Quadratic.java" afterDir="false" />
-    </list>
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Updated for use with application; review; now works" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,7 +195,28 @@
       <option name="project" value="LOCAL" />
       <updated>1570670053328</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Updated for use with application; review; now works">
+      <created>1571089382471</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1571089382471</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Updated for use with application; review; now works">
+      <created>1571089461500</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1571089461500</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Updated for use with application; review; now works">
+      <created>1571089534005</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1571089534005</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -239,6 +239,7 @@
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <MESSAGE value="Updated for use with package sample" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated for use with package sample" />
+    <MESSAGE value="Updated for use with application; review; now works" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated for use with application; review; now works" />
   </component>
 </project>
