@@ -99,6 +99,7 @@ public class Arc extends Function implements Calculations, Drawable {
             double endX = i + width / 2.0;
             double endY = -val(i) + height / 2.0;
             gc.strokeLine(startX, startY, endX, endY);
+
         }
     }
 }
