@@ -20,7 +20,7 @@ public class Function
 		this.x2 = x2;
 	}
 	public Function() {		
-		this.x1 = 300;
+		this.x1 = -300;
 		this.x2 = 300;
 	}
 	
