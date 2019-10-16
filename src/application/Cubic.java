@@ -30,19 +30,19 @@ public class Cubic extends Function implements Calculations, Drawable{
 			stra = "-";
 		}
 		String strb = new String(String.valueOf(b));
-		if(b == 1.0){
+		if(b == 1.0 && a != 0){
 			strb = "+ ";
-		}else if (b == -1.0){
+		}else if (b == -1.0 && a != 0){
 			strb = "-";
-		}else if (b > 1.0){
+		}else if (b > 1.0 && a != 0){
 			strb = "+ " + strb;
 		}
 		String strc = new String(String.valueOf(c));
-		if(c == 1.0){
+		if(c == 1.0 && b != 0 && a != 0){
 			strc = "+ ";
-		}else if (c == -1.0){
+		}else if (c == -1.0 && b != 0 && a != 0){
 			strc = "-";
-		}else if (c > 1.0){
+		}else if (c > 1.0 && b != 0 && a != 0){
 			strc = "+ "+ strc;
 		}
 		String strd = new String(String.valueOf(d));
@@ -79,6 +79,7 @@ public class Cubic extends Function implements Calculations, Drawable{
 		}else {
 			return "f(x) = " + stra + "(x" + strx1 + ")³ "+ strb + "(x" + strx1 + ")² " + strc + "(x" + strx1 + ") " + strd;
 		}
+		
 	}
         @Override
         public double val(double x) {
