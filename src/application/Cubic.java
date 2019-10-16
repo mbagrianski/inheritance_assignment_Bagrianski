@@ -12,7 +12,6 @@ public class Cubic extends Function implements Calculations, Drawable{
 	protected double x1;
 
 	public Cubic( double a, double b, double c, double d, double x1){
-		super(0, 0); //domain for now
 		this.a = a;
 		this.b = b;
 		this.c = c;
@@ -116,24 +115,31 @@ public class Cubic extends Function implements Calculations, Drawable{
 
 	@Override
 	public void draw(Canvas canvas) {
-double i = super.getStartDomain();
+		
         
-        double deltaX = 0.1;
         double width = canvas.getWidth();
         double height = canvas.getHeight();
 
+        double Xscale = width/(Math.abs(super.getEndDomain()) + Math.abs(super.getStartDomain()));
+        double Yscale = 1;
+        
+		double i = super.getStartDomain()*Xscale;        
+        double deltaX = 0.1*Xscale;
+
+        
+        super.setDomain(Xscale*super.getStartDomain(), Xscale*super.getEndDomain());
+        
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.setLineWidth(1);
         gc.setStroke(super.getColour());
+        gc.setLineWidth(1.5);
 
         while (i <= super.getEndDomain()) {
             double prevX = i;
-            i = Math.round((i + deltaX) * 10.0) / 10.0;
-            if (undefined(i)) continue;
-            double startX = prevX + width / 2.0;
-            double startY = -val(prevX) + height / 2.0;
-            double endX = i + width / 2.0;
-            double endY = -val(i) + height / 2.0;
+            i = (Math.round((i + deltaX) * 10.0) / 10.0);
+            double startX = (Xscale*prevX + width / 2.0);
+            double startY = Yscale*(-val(prevX)) + height / 2.0;
+            double endX = Xscale*i + width / 2.0;
+            double endY = Yscale*(-val(i)) + height / 2.0;
             gc.strokeLine(startX, startY, endX, endY);
         }
 	}
