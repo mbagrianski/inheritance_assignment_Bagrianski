@@ -86,7 +86,9 @@ public class Logarithm extends Function implements Calculations, Drawable{
 
     @Override
     public void draw(Canvas canvas) {
-        double i = super.x1;
+    	
+        double i = super.getStartDomain();
+        
         double deltaX = 0.1;
         double width = canvas.getWidth();
         double height = canvas.getHeight();
@@ -95,7 +97,7 @@ public class Logarithm extends Function implements Calculations, Drawable{
         gc.setLineWidth(1);
         gc.setStroke(super.getColour());
 
-        while (i <= super.x2) {
+        while (i <= super.getEndDomain()) {
             double prevX = i;
             i = Math.round((i + deltaX) * 10.0) / 10.0;
             if (undefined(i)) continue;
