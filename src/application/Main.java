@@ -35,17 +35,15 @@ public class Main extends Application {
 
         root.getChildren().add(canvas);
 
-        Linear line = new Linear(-1.0, 0, 0.0);
+        Arc line = new Arc(1, 1, 0);
         line.setColour(Color.RED);
         line.setName("Line 1");
-        line.setDomain(-200, 200);
+        line.setDomain(-10, 10);
         System.out.println(line.getName());
         System.out.println(line.toString());
         System.out.println(line.getArea(-10, 10));
         System.out.println(line.getSlope(0));
         line.draw(canvas);
-
-
 
         primaryStage.setScene(scene);
         primaryStage.show();

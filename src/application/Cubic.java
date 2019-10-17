@@ -2,10 +2,13 @@ package application;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 public class Cubic extends Function implements Calculations, Drawable{
-	
-	protected double a;
+
+    double deltaX = 0.001;
+
+    protected double a;
 	protected double b;
 	protected double c;
 	protected double d;
@@ -33,7 +36,7 @@ public class Cubic extends Function implements Calculations, Drawable{
 			strb = "+ ";
 		}else if (b == -1.0 && a != 0){
 			strb = "-";
-		}else if (b > 1.0 && a != 0){
+		}else if (b >= 0 && a != 0){
 			strb = "+ " + strb;
 		}
 		String strc = new String(String.valueOf(c));
@@ -41,7 +44,7 @@ public class Cubic extends Function implements Calculations, Drawable{
 			strc = "+ ";
 		}else if (c == -1.0 && b != 0 && a != 0){
 			strc = "-";
-		}else if (c > 1.0 && b != 0 && a != 0){
+		}else if (c >= 0 && (b != 0 || a != 0)){
 			strc = "+ "+ strc;
 		}
 		String strd = new String(String.valueOf(d));
@@ -108,7 +111,6 @@ public class Cubic extends Function implements Calculations, Drawable{
 
         @Override
         public double getSlope(double x) {
-            double deltaX = 0.01;
             return (val(x + deltaX) - val(x - deltaX)) / deltaX / 2.0;
         }
 
@@ -120,16 +122,28 @@ public class Cubic extends Function implements Calculations, Drawable{
         double width = canvas.getWidth();
         double height = canvas.getHeight();
 
+        double highest = val(super.getStartDomain());
+        double lowest = val(super.getStartDomain());
+
         double Xscale = width/(Math.abs(super.getEndDomain()) + Math.abs(super.getStartDomain()));
-        double Yscale = 1;
-        
+
+        for(double x = super.getStartDomain(); x <= super.getEndDomain(); x+= deltaX){ //calculate range
+            if(val(x) > highest) highest = val(x);
+            if(val(x) < lowest) lowest = val(x);
+        }
+        highest = Math.round((highest) * 10.0) / 10.0;
+        lowest = Math.round((lowest) * 10.0) / 10.0;
+        //System.out.println(highest +" "+ lowest);
+
+        double Yscale = height/(highest + lowest);
+
 		double i = super.getStartDomain()*Xscale;        
         double deltaX = 0.1*Xscale;
-
-        
-        super.setDomain(Xscale*super.getStartDomain(), Xscale*super.getEndDomain());
-        
         GraphicsContext gc = canvas.getGraphicsContext2D();
+
+
+        super.setDomain(Xscale*super.getStartDomain(), Xscale*super.getEndDomain());
+
         gc.setStroke(super.getColour());
         gc.setLineWidth(1.5);
 
@@ -142,5 +156,8 @@ public class Cubic extends Function implements Calculations, Drawable{
             double endY = Yscale*(-val(i)) + height / 2.0;
             gc.strokeLine(startX, startY, endX, endY);
         }
-	}
+
+
+
+    }
 }

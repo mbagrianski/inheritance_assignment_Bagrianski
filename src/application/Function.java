@@ -30,8 +30,8 @@ public class Function
 	// Sets the domain of this function to be between [x1, x2] where x2 > x1.
 	public void setDomain(double x1, double x2)
 	{
-		this.x1 = -300;
-		this.x2 = 300;
+		this.x1 = x1;
+		this.x2 = x2;
 	}
 	
 	// Returns the starting value of the domain.

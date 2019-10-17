@@ -81,8 +81,9 @@ public class Arc extends Function implements Calculations, Drawable {
 
     @Override
     public void draw(Canvas canvas) {
-double i = super.getStartDomain();
-        
+
+        double i = super.getStartDomain();
+
         double deltaX = 0.1;
         double width = canvas.getWidth();
         double height = canvas.getHeight();
