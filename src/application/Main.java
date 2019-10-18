@@ -33,12 +33,35 @@ public class Main extends Application {
 
         root.getChildren().add(canvas);
 
-        Arc line = new Arc(100, 40, -60);
-        line.setColour(Color.TURQUOISE);
-        line.setName("Line 1");
-        line.setDomain(-50, 50);
-
-        line.draw(canvas);
+        Linear l = new Linear(1, 1, 0);
+        l.setColour(Color.RED);
+        l.setName("Relation 1");
+        l.setDomain(-50, 50);
+        l.draw(canvas);
+        
+        Quadratic q = new Quadratic(0.25, -0.5, 1, 0);
+        q.setColour(Color.BLUE);
+        q.setName("Relation 2");
+        q.setDomain(-50, 50);
+        q.draw(canvas);
+        
+        Cubic c = new Cubic(0.35, 0.25, -0.5, -1.0, 2);
+        c.setColour(Color.TURQUOISE);
+        c.setName("Relation 3");
+        c.setDomain(-50, 50);
+        c.draw(canvas);
+        
+        Parabola p = new Parabola(1, 0, 0);
+        p.setColour(Color.PURPLE);
+        p.setName("Relation 4");
+        p.setDomain(-50, 50);
+        p.draw(canvas);
+        
+        Arc a = new Arc(400.0, 0, -2.0);
+        a.setColour(Color.BLUEVIOLET);
+        a.setName("Relation 2");
+        a.setDomain(-50, 50);
+        a.draw(canvas);
 
         primaryStage.setScene(scene);
         primaryStage.show();
