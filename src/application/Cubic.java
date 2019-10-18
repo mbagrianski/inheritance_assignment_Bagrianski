@@ -6,8 +6,6 @@ import javafx.scene.paint.Color;
 
 public class Cubic extends Function implements Calculations, Drawable{
 
-    double deltaX = 0.001;
-
     protected double a;
 	protected double b;
 	protected double c;
@@ -22,7 +20,7 @@ public class Cubic extends Function implements Calculations, Drawable{
 		this.x1 = x1;	
 		super.setName("Cubic"); 
 	}
-	
+
 	@Override
 	public String toString() {
 		String stra = new String(String.valueOf(a));
@@ -100,7 +98,7 @@ public class Cubic extends Function implements Calculations, Drawable{
 
         @Override
         public double getArea(double x_start, double x_end) {
-            double delta = 0.01;
+            double delta = 0.001;
             double i = x_start, area = 0;
             while (i <= x_end) {
                 area += val(i) * delta;
@@ -111,38 +109,44 @@ public class Cubic extends Function implements Calculations, Drawable{
 
         @Override
         public double getSlope(double x) {
-            return (val(x + deltaX) - val(x - deltaX)) / deltaX / 2.0;
-        }
-
+			double deltaX = 0.001;
+			return (val(x + deltaX) - val(x - deltaX)) / deltaX / 2.0;
+	}
 
 	@Override
 	public void draw(Canvas canvas) {
-		
-        
-        double width = canvas.getWidth();
+
+		GraphicsContext gc = canvas.getGraphicsContext2D();
+
+		double width = canvas.getWidth();
         double height = canvas.getHeight();
 
-        double highest = val(super.getStartDomain());
-        double lowest = val(super.getStartDomain());
+		double deltaX = 0.1;
+		double highest = val(super.getStartDomain());
+		double lowest = val(super.getEndDomain());
 
-        double Xscale = width/(Math.abs(super.getEndDomain()) + Math.abs(super.getStartDomain()));
+		for(double x = super.getStartDomain(); x <= super.getEndDomain(); x+= deltaX){ //calculate range
+			if(val(x) > highest) highest = val(x);
+			if(val(x) < lowest) lowest = val(x);
+		}
 
-        for(double x = super.getStartDomain(); x <= super.getEndDomain(); x+= deltaX){ //calculate range
-            if(val(x) > highest) highest = val(x);
-            if(val(x) < lowest) lowest = val(x);
-        }
-        highest = Math.round((highest) * 10.0) / 10.0;
-        lowest = Math.round((lowest) * 10.0) / 10.0;
-        //System.out.println(highest +" "+ lowest);
+		highest = Math.abs(Math.round((highest) * 10.0) / 10.0);
+		lowest = Math.round((lowest) * 10.0) / 10.0;
 
-        double Yscale = height/(highest + lowest);
+		double startDomain = super.getStartDomain(), endDomain = super.getEndDomain();
 
-		double i = super.getStartDomain()*Xscale;        
-        double deltaX = 0.1*Xscale;
-        GraphicsContext gc = canvas.getGraphicsContext2D();
+		double Xscale = width / (endDomain - startDomain);
+		double Yscale = height / (highest - lowest);
 
+		double adjustX = (endDomain + startDomain) / 2;
+		double adjustY = (highest + lowest) / 2;
 
-        super.setDomain(Xscale*super.getStartDomain(), Xscale*super.getEndDomain());
+		double i = super.getStartDomain()*Xscale;
+
+		gc.setStroke(Color.BLACK);
+		gc.setLineWidth(1);
+		gc.strokeLine(0, height/2 +adjustY*Yscale, width, height/2 +adjustY*Yscale);
+		gc.strokeLine(width/2-adjustX*Xscale, 0, width/2-adjustX*Xscale, height);
 
         gc.setStroke(super.getColour());
         gc.setLineWidth(1.5);
@@ -150,14 +154,11 @@ public class Cubic extends Function implements Calculations, Drawable{
         while (i <= super.getEndDomain()) {
             double prevX = i;
             i = (Math.round((i + deltaX) * 10.0) / 10.0);
-            double startX = (Xscale*prevX + width / 2.0);
-            double startY = Yscale*(-val(prevX)) + height / 2.0;
-            double endX = Xscale*i + width / 2.0;
-            double endY = Yscale*(-val(i)) + height / 2.0;
+            double startX = Xscale * (prevX- adjustX) + width/2;
+            double startY = (-val(prevX)+adjustY) * Yscale + height/2;
+            double endX = Xscale * (i - adjustX) + width/2;
+            double endY = (-val(i)+adjustY) * Yscale + height/2;
             gc.strokeLine(startX, startY, endX, endY);
         }
-
-
-
     }
 }

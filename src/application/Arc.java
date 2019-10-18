@@ -2,6 +2,7 @@ package application;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 public class Arc extends Function implements Calculations, Drawable {
 
@@ -82,24 +83,48 @@ public class Arc extends Function implements Calculations, Drawable {
     @Override
     public void draw(Canvas canvas) {
 
-        double i = super.getStartDomain();
+        GraphicsContext gc = canvas.getGraphicsContext2D();
 
-        double deltaX = 0.1;
         double width = canvas.getWidth();
         double height = canvas.getHeight();
 
-        GraphicsContext gc = canvas.getGraphicsContext2D();
+        double deltaX = 0.1;
+        double highest = val(super.getStartDomain());
+        double lowest = val(super.getEndDomain());
+
+        for(double x = super.getStartDomain(); x <= super.getEndDomain(); x+= deltaX){ //calculate range
+            if(val(x) > highest) highest = val(x);
+            if(val(x) < lowest) lowest = val(x);
+        }
+
+        highest = Math.abs(Math.round((highest) * 10.0) / 10.0);
+        lowest = Math.round((lowest) * 10.0) / 10.0;
+
+        double startDomain = super.getStartDomain(), endDomain = super.getEndDomain();
+
+        double Xscale = width / (endDomain - startDomain);
+        double Yscale = height / (highest - lowest);
+
+        double adjustX = (endDomain + startDomain) / 2;
+        double adjustY = (highest + lowest) / 2;
+
+        double i = super.getStartDomain()*Xscale;
+
+        gc.setStroke(Color.BLACK);
         gc.setLineWidth(1);
+        gc.strokeLine(0, height/2 +adjustY*Yscale, width, height/2 +adjustY*Yscale);
+        gc.strokeLine(width/2-adjustX*Xscale, 0, width/2-adjustX*Xscale, height);
+
         gc.setStroke(super.getColour());
+        gc.setLineWidth(1.5);
 
         while (i <= super.getEndDomain()) {
             double prevX = i;
-            i = Math.round((i + deltaX) * 10.0) / 10.0;
-            if (undefined(i)) continue;
-            double startX = prevX + width / 2.0;
-            double startY = -val(prevX) + height / 2.0;
-            double endX = i + width / 2.0;
-            double endY = -val(i) + height / 2.0;
+            i = (Math.round((i + deltaX) * 10.0) / 10.0);
+            double startX = Xscale * (prevX- adjustX) + width/2;
+            double startY = (-val(prevX)+adjustY) * Yscale + height/2;
+            double endX = Xscale * (i - adjustX) + width/2;
+            double endY = (-val(i)+adjustY) * Yscale + height/2;
             gc.strokeLine(startX, startY, endX, endY);
         }
     }

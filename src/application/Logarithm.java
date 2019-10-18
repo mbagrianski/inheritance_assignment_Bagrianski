@@ -89,7 +89,7 @@ public class Logarithm extends Function implements Calculations, Drawable{
     	
         double i = super.getStartDomain();
         
-        double deltaX = 0.1;
+        double deltaX = 0.01;
         double width = canvas.getWidth();
         double height = canvas.getHeight();
 

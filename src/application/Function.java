@@ -37,13 +37,13 @@ public class Function
 	// Returns the starting value of the domain.
 	public double getStartDomain()
 	{
-		return x1;
+		return this.x1;
 	}
 	
 	// Returns the ending value of the domain.
 	public double getEndDomain()
 	{
-		return x2;
+		return this.x2;
 	}
 	
 	// Sets the drawing colour for this function.  The Color class is from JavaFX.
@@ -67,6 +67,6 @@ public class Function
 	// Returns the name of this function type as a String.
 	public String getName()
 	{
-		return name;
+		return this.name;
 	}
 }
