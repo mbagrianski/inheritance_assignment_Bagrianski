@@ -24,7 +24,7 @@ public class Arc extends Function implements Calculations, Drawable {
         if (r == 0.0) {
             strr = "";
         } else {
-            strr = "(" + strr + ")^2 - ";
+            strr = "(" + strr + ")² - ";
         }
 
         String strXcenter = new String(String.valueOf(-xcenter));
@@ -45,7 +45,7 @@ public class Arc extends Function implements Calculations, Drawable {
         }
 
         return "f(x) = sqrt[ " + strr + "(x" + strXcenter
-                + ")^2 ]" + strYcenter;
+                + ")² ]" + strYcenter;
     }
 
     @Override
