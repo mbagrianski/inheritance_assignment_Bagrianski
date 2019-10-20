@@ -2,6 +2,7 @@ package application;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 public class Logarithm extends Function implements Calculations, Drawable{
 	
@@ -86,26 +87,60 @@ public class Logarithm extends Function implements Calculations, Drawable{
 
     @Override
     public void draw(Canvas canvas) {
-    	
-        double i = super.getStartDomain();
-        
-        double deltaX = 0.01;
+
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+
         double width = canvas.getWidth();
         double height = canvas.getHeight();
 
-        GraphicsContext gc = canvas.getGraphicsContext2D();
+        double deltaX = 0.01;
+        double start = super.getStartDomain();
+        while(val(start) != val(start)){
+            start += deltaX;
+        }
+        double highest = val(start);
+        double lowest = val(super.getEndDomain());
+
+        for(double x = super.getStartDomain(); x <= super.getEndDomain(); x+= deltaX){ //calculate range
+            if(val(x) == val(x) && x != x1) {
+                if (val(x) > highest) highest = val(x);
+                if (val(x) < lowest) lowest = val(x);
+                //System.out.println(Double.isNaN(val(x)));
+                System.out.println(highest + " " + lowest);
+            }
+        }
+
+        highest = Math.round((highest) * 100.0) / 100.0;
+        lowest = Math.round((lowest) * 100.0) / 100.0;
+
+        double startDomain = super.getStartDomain(), endDomain = super.getEndDomain();
+
+        double Xscale = width / (endDomain - startDomain);
+        double Yscale = height / (highest - lowest);
+
+        double adjustX = (endDomain + startDomain) / 2;
+        double adjustY = (highest + lowest) / 2;
+
+        double i = super.getStartDomain()*Xscale;
+
+        gc.setStroke(Color.BLACK);
         gc.setLineWidth(1);
+        gc.strokeLine(0, height/2 +adjustY*Yscale, width, height/2 +adjustY*Yscale);
+        gc.strokeLine(width/2-adjustX*Xscale, 0, width/2-adjustX*Xscale, height);
+
         gc.setStroke(super.getColour());
+        gc.setLineWidth(1.5);
 
         while (i <= super.getEndDomain()) {
             double prevX = i;
-            i = Math.round((i + deltaX) * 10.0) / 10.0;
-            if (undefined(i)) continue;
-            double startX = prevX + width / 2.0;
-            double startY = -val(prevX) + height / 2.0;
-            double endX = i + width / 2.0;
-            double endY = -val(i) + height / 2.0;
-            gc.strokeLine(startX, startY, endX, endY);
+            i = (Math.round((i + deltaX) * 100.0) / 100.0);
+            if(i != x1) {
+                double startX = Xscale * (prevX - adjustX) + width / 2;
+                double startY = (-val(prevX) + adjustY) * Yscale + height / 2;
+                double endX = Xscale * (i - adjustX) + width / 2;
+                double endY = (-val(i) + adjustY) * Yscale + height / 2;
+                gc.strokeLine(startX, startY, endX, endY);
+            }
         }
     }
 }

@@ -38,30 +38,36 @@ public class Main extends Application {
         l.setName("Relation 1");
         l.setDomain(-50, 50);
         l.draw(canvas);
-        
+
         Quadratic q = new Quadratic(0.25, -0.5, 1, 0);
         q.setColour(Color.BLUE);
         q.setName("Relation 2");
         q.setDomain(-50, 50);
         q.draw(canvas);
-        
-        Cubic c = new Cubic(0.35, 0.25, -0.5, -1.0, 2);
+
+        Cubic c = new Cubic(0.35, 0.25, -0.5, -1, 2);
         c.setColour(Color.TURQUOISE);
         c.setName("Relation 3");
         c.setDomain(-50, 50);
         c.draw(canvas);
-        
+
         Parabola p = new Parabola(1, 0, 0);
         p.setColour(Color.PURPLE);
         p.setName("Relation 4");
         p.setDomain(-50, 50);
         p.draw(canvas);
-        
-        Arc a = new Arc(400.0, 0, -2.0);
-        a.setColour(Color.BLUEVIOLET);
+
+        Arc a = new Arc(400, 0, -2);
+        a.setColour(Color.YELLOWGREEN);
         a.setName("Relation 2");
-        a.setDomain(-50, 50);
+        a.setDomain(-300, 300);
         a.draw(canvas);
+
+        Logarithm ln = new Logarithm(1, 0, 0);
+        ln.setColour(Color.ORANGE);
+        ln.setName("Relation 2");
+        ln.setDomain(-300, 300);
+        ln.draw(canvas);
 
         primaryStage.setScene(scene);
         primaryStage.show();

@@ -88,7 +88,7 @@ public class Arc extends Function implements Calculations, Drawable {
         double width = canvas.getWidth();
         double height = canvas.getHeight();
 
-        double deltaX = 0.1;
+        double deltaX = 0.01;
         double highest = val(super.getStartDomain());
         double lowest = val(super.getEndDomain());
 
@@ -97,13 +97,12 @@ public class Arc extends Function implements Calculations, Drawable {
             if(val(x) < lowest) lowest = val(x);
         }
 
-        highest = Math.abs(Math.round((highest) * 10.0) / 10.0);
-        lowest = Math.round((lowest) * 10.0) / 10.0;
+        highest = Math.round((highest) * 100.0) / 100.0;
+        lowest = Math.round((lowest) * 100.0) / 100.0;
 
         double startDomain = super.getStartDomain(), endDomain = super.getEndDomain();
 
         double Xscale = width / (endDomain - startDomain);
-        double Yscale = height / (highest - lowest);
 
         double adjustX = (endDomain + startDomain) / 2;
         double adjustY = (highest + lowest) / 2;
@@ -112,7 +111,7 @@ public class Arc extends Function implements Calculations, Drawable {
 
         gc.setStroke(Color.BLACK);
         gc.setLineWidth(1);
-        gc.strokeLine(0, height/2 +adjustY*Yscale, width, height/2 +adjustY*Yscale);
+        gc.strokeLine(0, height/2 +adjustY*Xscale, width, height/2 +adjustY*Xscale);
         gc.strokeLine(width/2-adjustX*Xscale, 0, width/2-adjustX*Xscale, height);
 
         gc.setStroke(super.getColour());
@@ -120,11 +119,11 @@ public class Arc extends Function implements Calculations, Drawable {
 
         while (i <= super.getEndDomain()) {
             double prevX = i;
-            i = (Math.round((i + deltaX) * 10.0) / 10.0);
+            i = (Math.round((i + deltaX) * 100.0) / 100.0);
             double startX = Xscale * (prevX- adjustX) + width/2;
-            double startY = (-val(prevX)+adjustY) * Yscale + height/2;
+            double startY = (-val(prevX)+adjustY) * Xscale + height/2;
             double endX = Xscale * (i - adjustX) + width/2;
-            double endY = (-val(i)+adjustY) * Yscale + height/2;
+            double endY = (-val(i)+adjustY) * Xscale + height/2;
             gc.strokeLine(startX, startY, endX, endY);
         }
     }

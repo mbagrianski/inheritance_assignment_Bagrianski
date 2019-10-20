@@ -121,7 +121,7 @@ public class Cubic extends Function implements Calculations, Drawable{
 		double width = canvas.getWidth();
         double height = canvas.getHeight();
 
-		double deltaX = 0.1;
+		double deltaX = 0.01;
 		double highest = val(super.getStartDomain());
 		double lowest = val(super.getEndDomain());
 
@@ -130,8 +130,8 @@ public class Cubic extends Function implements Calculations, Drawable{
 			if(val(x) < lowest) lowest = val(x);
 		}
 
-		highest = Math.abs(Math.round((highest) * 10.0) / 10.0);
-		lowest = Math.round((lowest) * 10.0) / 10.0;
+		highest = Math.round((highest) * 100.0) / 100.0;
+		lowest = Math.round((lowest) * 100.0) / 100.0;
 
 		double startDomain = super.getStartDomain(), endDomain = super.getEndDomain();
 
@@ -153,7 +153,7 @@ public class Cubic extends Function implements Calculations, Drawable{
 
         while (i <= super.getEndDomain()) {
             double prevX = i;
-            i = (Math.round((i + deltaX) * 10.0) / 10.0);
+            i = (Math.round((i + deltaX) * 100.0) / 100.0);
             double startX = Xscale * (prevX- adjustX) + width/2;
             double startY = (-val(prevX)+adjustY) * Yscale + height/2;
             double endX = Xscale * (i - adjustX) + width/2;
