@@ -19,7 +19,7 @@ public class Arc extends Function implements Calculations, Drawable {
     }
 
     @Override
-    public String toString() {
+    public String toString() { //toString method which covers all possible cases, produces neat format
         String strr = new String(String.valueOf(r));
         if (r == 0.0) {
             strr = "";
@@ -104,15 +104,15 @@ public class Arc extends Function implements Calculations, Drawable {
 
         double Xscale = width / (endDomain - startDomain);
 
-        double adjustX = (endDomain + startDomain) / 2;
-        double adjustY = (highest + lowest) / 2;
+        double shiftX = (endDomain + startDomain) / 2;
+        double shiftY = (highest + lowest) / 2;
 
         double i = super.getStartDomain()*Xscale;
 
         gc.setStroke(Color.BLACK);
         gc.setLineWidth(1);
-        gc.strokeLine(0, height/2 +adjustY*Xscale, width, height/2 +adjustY*Xscale);
-        gc.strokeLine(width/2-adjustX*Xscale, 0, width/2-adjustX*Xscale, height);
+        gc.strokeLine(0, height/2 +shiftY*Xscale, width, height/2 +shiftY*Xscale);
+        gc.strokeLine(width/2-shiftX*Xscale, 0, width/2-shiftX*Xscale, height);
 
         gc.setStroke(super.getColour());
         gc.setLineWidth(1.5);
@@ -120,10 +120,10 @@ public class Arc extends Function implements Calculations, Drawable {
         while (i <= super.getEndDomain()) {
             double prevX = i;
             i = (Math.round((i + deltaX) * 100.0) / 100.0);
-            double startX = Xscale * (prevX- adjustX) + width/2;
-            double startY = (-val(prevX)+adjustY) * Xscale + height/2;
-            double endX = Xscale * (i - adjustX) + width/2;
-            double endY = (-val(i)+adjustY) * Xscale + height/2;
+            double startX = Xscale * (prevX- shiftX) + width/2;
+            double startY = (-val(prevX)+shiftY) * Xscale + height/2;
+            double endX = Xscale * (i - shiftX) + width/2;
+            double endY = (-val(i)+shiftY) * Xscale + height/2;
             gc.strokeLine(startX, startY, endX, endY);
         }
     }

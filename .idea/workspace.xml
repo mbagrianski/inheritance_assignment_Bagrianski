@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="scales with arc, cubic superclass; no labels">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Commenting">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/inheritance_assignment_Bagrianski/application/Arc.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/inheritance_assignment_Bagrianski/application/Arc.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/inheritance_assignment_Bagrianski/application/Cubic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/inheritance_assignment_Bagrianski/application/Cubic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/inheritance_assignment_Bagrianski/application/Logarithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/inheritance_assignment_Bagrianski/application/Logarithm.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/inheritance_assignment_Bagrianski/application/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/inheritance_assignment_Bagrianski/application/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/Arc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Arc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/Cubic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Cubic.java" afterDir="false" />
@@ -254,7 +251,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571364657500</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Completed">
+      <created>1571597676590</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1571597676590</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -280,6 +284,8 @@
     <MESSAGE value="Updated for use with application; review; now works" />
     <MESSAGE value="-" />
     <MESSAGE value="scales with arc, cubic superclass; no labels" />
-    <option name="LAST_COMMIT_MESSAGE" value="scales with arc, cubic superclass; no labels" />
+    <MESSAGE value="Completed" />
+    <MESSAGE value="Commenting" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commenting" />
   </component>
 </project>

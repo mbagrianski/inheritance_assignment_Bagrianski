@@ -22,7 +22,7 @@ public class Cubic extends Function implements Calculations, Drawable{
 	}
 
 	@Override
-	public String toString() {
+	public String toString() { //toString method which covers all possible cases, produces neat format
 		String stra = new String(String.valueOf(a));
 		if(a == 1.0){
 			stra = "";
@@ -67,7 +67,7 @@ public class Cubic extends Function implements Calculations, Drawable{
 		}else if(a == 0 && b == 0){
 			return "f(x) = " + strc + "(x" + strx1 + ") " + strd;
 		}else if(b == 0 && c == 0) {
-			return "f(x) = " + stra + "(x" + strx1 + ")^3 " + strd;
+			return "f(x) = " + stra + "(x" + strx1 + ")³ " + strd;
 		}else if(a == 0 && c == 0) {
 			return "f(x) = " + strb + "(x" + strx1 + ")² " + strd;
 		}else if(a == 0){
@@ -121,32 +121,33 @@ public class Cubic extends Function implements Calculations, Drawable{
 		double width = canvas.getWidth();
         double height = canvas.getHeight();
 
-		double deltaX = 0.01;
+		double deltaX = 0.01; //delta by which x-val is incremented to draw relation on sreen
 		double highest = val(super.getStartDomain());
 		double lowest = val(super.getEndDomain());
 
-		for(double x = super.getStartDomain(); x <= super.getEndDomain(); x+= deltaX){ //calculate range
+		for(double x = super.getStartDomain(); x <= super.getEndDomain(); x+= deltaX){ //calculate range by finding max and min
 			if(val(x) > highest) highest = val(x);
 			if(val(x) < lowest) lowest = val(x);
 		}
 
-		highest = Math.round((highest) * 100.0) / 100.0;
+		highest = Math.round((highest) * 100.0) / 100.0; //round to speed up calculations (to 3 decimal places)
 		lowest = Math.round((lowest) * 100.0) / 100.0;
 
 		double startDomain = super.getStartDomain(), endDomain = super.getEndDomain();
 
-		double Xscale = width / (endDomain - startDomain);
-		double Yscale = height / (highest - lowest);
+		double Xscale = width / (endDomain - startDomain); //scale factor (for function to fit on-screen)
+		double Yscale = height / (highest - lowest); //These are calculated as a ration of screen:domain or screen:range
 
-		double adjustX = (endDomain + startDomain) / 2;
-		double adjustY = (highest + lowest) / 2;
+		double shiftX = (endDomain + startDomain) / 2; //Calculate how much function has to be shifted to be centered on screen
+		double shiftY = (highest + lowest) / 2;
 
 		double i = super.getStartDomain()*Xscale;
 
 		gc.setStroke(Color.BLACK);
 		gc.setLineWidth(1);
-		gc.strokeLine(0, height/2 +adjustY*Yscale, width, height/2 +adjustY*Yscale);
-		gc.strokeLine(width/2-adjustX*Xscale, 0, width/2-adjustX*Xscale, height);
+		gc.strokeLine(0, height/2 +shiftY*Yscale, width, height/2 +shiftY*Yscale); //draw axis, shifted
+        //in correct relation to function (i.e. if function is y=x+5, axis is shifted 5 right)
+		gc.strokeLine(width/2-shiftX*Xscale, 0, width/2-shiftX*Xscale, height);
 
         gc.setStroke(super.getColour());
         gc.setLineWidth(1.5);
@@ -154,11 +155,12 @@ public class Cubic extends Function implements Calculations, Drawable{
         while (i <= super.getEndDomain()) {
             double prevX = i;
             i = (Math.round((i + deltaX) * 100.0) / 100.0);
-            double startX = Xscale * (prevX- adjustX) + width/2;
-            double startY = (-val(prevX)+adjustY) * Yscale + height/2;
-            double endX = Xscale * (i - adjustX) + width/2;
-            double endY = (-val(i)+adjustY) * Yscale + height/2;
-            gc.strokeLine(startX, startY, endX, endY);
+            double startX = Xscale * (prevX- shiftX) + width/2;
+            double startY = (-val(prevX)+shiftY) * Yscale + height/2;
+            double endX = Xscale * (i - shiftX) + width/2;
+            double endY = (-val(i)+shiftY) * Yscale + height/2;
+            gc.strokeLine(startX, startY, endX, endY); //draw a tangent approximating the function to be draw between
+            //two very close points
         }
     }
 }
